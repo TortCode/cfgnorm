@@ -21,14 +21,8 @@ class Grammar:
         self.rules = OrderedDict(rules)
         self.rules.move_to_end(start, last=False)
         self.start = start
-
-    @cached_property
-    def nonterminals(self):
-        return frozenset(self.rules.keys())
-
-    @cached_property
-    def terminals(self):
-        return frozenset(
+        self.nonterminals = frozenset(self.rules.keys())
+        self.terminals = frozenset(
             sym
             for rhs in self.rules.values()
             for opt in rhs
