@@ -204,7 +204,7 @@ class Grammar:
         new_rules = defaultdict(set)
 
         def aux_format(X, i, j):
-            return f"{X}_{i}:{j}"
+            return f"{X}_{i}^{j}"
 
         for lhs, rhs in self.rules.items():
             for i, opt in enumerate(rhs):
@@ -212,7 +212,7 @@ class Grammar:
                     aux_lhs = aux_format(lhs, i, j) if j > 0 else lhs
                     aux_sym = aux_format(lhs, i, j + 1)
                     new_rules[aux_lhs].add((opt[j], aux_sym))
-                aux_lhs = aux_format(lhs, i, len(opt) - 3) if len(opt) > 2 else lhs
+                aux_lhs = aux_format(lhs, i, len(opt) - 2) if len(opt) > 2 else lhs
                 new_rules[aux_lhs].add(opt[-2:])
 
         return Grammar(new_rules, self.start)
