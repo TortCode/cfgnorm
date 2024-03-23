@@ -20,8 +20,8 @@ class Grammar:
         self.rules = OrderedDict(rules)
         self.rules.move_to_end(start, last=False)
         self.start = start
-        self.nonterminals = frozenset(self.rules.keys())
-        self.terminals = frozenset(
+        self.nonterminals = set(self.rules.keys())
+        self.terminals = set(
             sym
             for rhs in self.rules.values()
             for opt in rhs
