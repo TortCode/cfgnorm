@@ -353,7 +353,7 @@ def getargs():
         "-u", "--unit", action="store_true", help="eliminate unit rules"
     )
     parser.add_argument(
-        "-c", "--cnf", action="store_true", help="convert to Chomsky Normal Form"
+        "-c", "--cnf", action="store_true", help="convert to chomsky normal form"
     )
     parser.add_argument(
         "-v", "--verbose", action="store_true", help="print intermediate steps"
